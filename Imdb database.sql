@@ -14,11 +14,11 @@ ALTER DATABASE IMDb CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
 -- Create tables only
 CREATE TABLE movie_list(
     id          INT NOT NULL AUTO_INCREMENT,
-    movie_name  VARCHAR(225),
-    director    VARCHAR(225),
-    artist      VARCHAR(225),
+    movie_name  VARCHAR(225) NOT NULL,
+    director    VARCHAR(225) NOT NULL,
+    artist      VARCHAR(225) NOT NULL,
     realse_year INT,
-    PRIMARY KEY (id) 
+    PRIMARY KEY (id, artist) 
 );
 
 CREATE TABLE movie_details(
@@ -63,8 +63,7 @@ CREATE TABLE artist(
     dubbing         BOOLEAN,
     singing         BOOLEAN,
     music           BOOLEAN,
-    other_skills    VARCHAR(225),
-    FOREIGN KEY (artist_name) REFERENCES movie_list(artist)
+    other_skills    VARCHAR(225)
 );
 
 CREATE TABLE artist_role(
